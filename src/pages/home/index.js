@@ -1,15 +1,20 @@
 import React from "react";
-import { StyledHeader } from './styled'
-import MarvelLogo from '../../assets/img/marvel-logo.png'
-import { StyledInput } from '../../styles/globalStyles'
+import { Header } from "./components/header"
+import { HeroeCard } from "./components/heroe-card"
+import { StyledWrapper } from "./styled"
 
 export const Home = () => {
   return (
     <div>
-      <StyledHeader>
-        <img src={MarvelLogo} />
-        <StyledInput  placeholder="Search..." />
-      </StyledHeader>
+      <Header></Header>
+      <StyledWrapper>
+        <HeroeCard></HeroeCard>
+        <HeroeCard></HeroeCard>
+        <HeroeCard></HeroeCard>
+        <HeroeCard></HeroeCard>
+        <HeroeCard></HeroeCard>
+      </StyledWrapper>
     </div>
   )
 }
+

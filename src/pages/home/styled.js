@@ -1,19 +1,11 @@
 import styled from 'styled-components'
 
-export const StyledHeader = styled.header`
-  background: white;
-  padding: 8px;
-  box-shadow: 0px 0px 3px 0px #353535;
-  display: flex;
-  align-items: center;
+export const StyledWrapper = styled.div`
 
-  img { 
-    height: 48px;
-    margin-right: 12px
-  }
+display: grid;
+grid-template-columns: repeat(4,1fr);
+grid-column-gap: 10px; 
+grid-row-gap: 10px;
 
-  input {
-    width: 100%;
-    max-width: 600px;
-  }
+
 `
