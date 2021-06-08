@@ -6,7 +6,8 @@ export const StyledHeader = styled.header`
   box-shadow: 0px 0px 3px 0px #353535;
   display: flex;
   align-items: center;
-
+  margin-bottom: 12px;
+  
   img { 
     height: 48px;
     margin-right: 12px
