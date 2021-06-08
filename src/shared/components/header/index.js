@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledHeader } from './styled'
-import MarvelLogo from '../../../../assets/img/marvel-logo.png'
-import { StyledInput } from '../../../../styles/globalStyles'
+import MarvelLogo from '../../../assets/img/marvel-logo.png'
+import { StyledInput } from '../../../styles/globalStyles'
 
 export const Header = () => {
     return (

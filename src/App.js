@@ -4,21 +4,25 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { StyledPageLayout } from './styles/layout'
-import { Home } from './pages/home/'
+import {PageLayout} from "./shared/layout/"
+import { HomePage } from './pages/home/'
+import { ComicPage } from './pages/comic-details/'
 
 function App() {
   return (
     <Router>
-      <StyledPageLayout>
+      <PageLayout>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/comic">
+            <ComicPage />
+          </Route>
           <Route path="/">
-            <Home />
+            <HomePage />
           </Route>
         </Switch>
-      </StyledPageLayout>
+      </PageLayout>
     </Router>
   );
 }
