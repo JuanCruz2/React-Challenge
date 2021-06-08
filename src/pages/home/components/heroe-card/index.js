@@ -1,10 +1,11 @@
 import React from "react";
 import {StyledCard} from "./styled"
 
-export const HeroeCard = () => {
+export const HeroeCard = (props) => {
+    console.log(props)
     return (
         <StyledCard>
-            card
+            {props.name}
         </StyledCard>
     )
 }
