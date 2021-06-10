@@ -1,9 +1,10 @@
 import React from 'react';
+import { ComicDetails } from "./components/comic-details"
 
 export const ComicPage = () => {
     return (
         <div>
-            Comic route
+            <ComicDetails></ComicDetails>
         </div>
     )
 }
