@@ -5,7 +5,7 @@ import {StyledLoader} from "./styled"
 export const Loader = () => {
     return (
         <StyledLoader>
-            <img src={MarvelLogo} />
+            <img alt="loader icon" src={MarvelLogo} />
         </StyledLoader>
     )
 }

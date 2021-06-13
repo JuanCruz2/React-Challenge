@@ -3,7 +3,11 @@ import {StyledCard, StyledCardHeader, StyledCardBody} from "./styled"
 
 export const HeroeCard = (props) => {
     return (
-        <StyledCard >
+        <StyledCard onClick={() => {
+            if(props.onClick) {
+                props.onClick()
+            }
+        }}>
         
             <StyledCardHeader backgroundImage={props.image}/>
                 
