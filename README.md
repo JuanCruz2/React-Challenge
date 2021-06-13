@@ -9,3 +9,5 @@
 * Styled CSS cards for each character
 * Marvel loader
 * Search characters and comics
+* Search characters by query parameters
+* Search comics by query parameters

@@ -17,7 +17,10 @@ export const Header = () => {
             <img src={MarvelLogo} alt="logo" />
             <StyledFormWrapper onSubmit={(e) => {
                 e.preventDefault()
-                dispatch(searchCharactersAndComics(term))
+                dispatch(searchCharactersAndComics({
+                    character: term,
+                    comic: term,
+                }))
             }}>
                 <StyledInput placeholder="Search..." value={term} onChange={(e) => setTerm(e.target.value)} />
                 <button type="submit">

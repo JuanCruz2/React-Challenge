@@ -4,17 +4,27 @@ import { HeroeModal } from "./components/heroe-modal"
 import { StyledWrapper, StyledTabItem } from "./styled"
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  fetchRandomCharacters,
+  fetchRandomCharacters, searchCharactersAndComics
 } from '../../reducers/characters/charactersSlice';
 import { Loader } from "../../shared/components/loader"
 
-export const HomePage = () => {
+export const HomePage = (props) => {
   const [activeView, setActiveView] = useState("characters")
   const reducerState = useSelector((state) => state.characters);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchRandomCharacters())
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+
+    if(params.character || params.comic) {
+      dispatch(searchCharactersAndComics({
+        character: params.character, 
+        comic: params.comic
+      }))
+    } else {
+      dispatch(fetchRandomCharacters())
+    }
   }, [dispatch])
 
   return (
