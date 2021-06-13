@@ -1,10 +1,18 @@
 import React from "react";
-import {StyledCard} from "./styled"
+import {StyledCard, StyledCardHeader, StyledCardBody} from "./styled"
 
 export const HeroeCard = (props) => {
     return (
-        <StyledCard backgroundImage={props.image}>
-            {props.name}
+        <StyledCard >
+        
+            <StyledCardHeader backgroundImage={props.image}/>
+                
+            <StyledCardBody>
+                <p>
+                    {props.name}
+                </p>
+            </StyledCardBody>
+        
         </StyledCard>
     )
 }
