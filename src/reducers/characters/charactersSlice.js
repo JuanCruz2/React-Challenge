@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchCharacters, fetchComics } from "../../api/fetch-characters/"
+import { fetchCharacters, fetchComics } from "../../api/fetch-data/"
 
 const initialState = {
 	charactersList: [],
@@ -19,9 +19,10 @@ export const fetchRandomCharacters = createAsyncThunk(
 
 export const searchCharactersAndComics = createAsyncThunk(
 	'characters/searchCharacters',
-	async (term) => {
-		const charactersList = await fetchCharacters(term);
-		const comicsList = await fetchComics(term);
+	async (searchTerm) => {
+		const charactersList = searchTerm.character ? await fetchCharacters(searchTerm.character) : [];
+		const comicsList = searchTerm.comic ? await fetchComics(searchTerm.comic) : [];
+
 		return {charactersList, comicsList};
 	}
 );
