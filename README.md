@@ -8,3 +8,4 @@
 * New 8 random characters as home page
 * Styled CSS cards for each character
 * Marvel loader
+* Search characters and comics

@@ -21,3 +21,10 @@ export const StyledWrapper = styled.div`
         padding: 12px 32px;
     }
 `
+
+export const StyledTabItem = styled.span`
+	color: ${(props) => props.isActive ? "#ec242b" : "black"};
+	margin: 12px;
+	font-weight: bold;
+	cursor: pointer;
+`
