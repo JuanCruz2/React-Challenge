@@ -8,13 +8,33 @@ export const StyledHeader = styled.header`
   align-items: center;
   margin-bottom: 12px;
   
-  img { 
+   > img { 
     height: 48px;
     margin-right: 12px
   }
 
   input {
     width: 100%;
-    max-width: 600px;
+  }
+`
+
+export const StyledFormWrapper = styled.form`
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 450px;
+
+  
+  img {
+    width: 16px;
+  }
+
+  button {
+    padding: 0 12px;
+    background: white;
+    border: 1px solid #ccc;
+    border-left: 0;
+    border-radius: 0px 6px 6px 0px;
+    cursor: pointer;
   }
 `
