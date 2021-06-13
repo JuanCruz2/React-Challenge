@@ -4,4 +4,4 @@
 * Grid layout for heroes card display
 * Modal component for characters details
 * Comic details dedicate page
-* Redux + ReduxToolkit as store managment 
+* Redux + ReduxToolkit for store managment 
