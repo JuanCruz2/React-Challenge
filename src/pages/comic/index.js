@@ -13,7 +13,7 @@ export const ComicPage = () => {
 
     useEffect(() => {
         dispatch(fetchComicDetails(comicId))
-    }, [dispatch])
+    }, [dispatch, comicId])
 
     return (
         <div>

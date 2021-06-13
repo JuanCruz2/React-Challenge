@@ -22,6 +22,12 @@ export const StyledWrapper = styled.div`
     }
 `
 
+export const StyledTabsWrapper = styled.div`
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+`
+
 export const StyledTabItem = styled.span`
 	color: ${(props) => props.isActive ? "#ec242b" : "black"};
 	margin: 12px;

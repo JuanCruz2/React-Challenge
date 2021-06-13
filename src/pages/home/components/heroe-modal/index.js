@@ -1,12 +1,46 @@
 import React from "react";
-import {StyledModalOverlay, StyledModal} from "./styled"
+import { Link } from "react-router-dom";
+import { 
+	StyledModalOverlay,
+	StyledModal,
+	StyledModalHeader,
+	StyledModalBody,
+	StyledDescription
+} from "./styled"
+import CloseImage from "../../../../assets/img/close.svg"
 
-export const HeroeModal = () => {
-    return (
-        <StyledModalOverlay>
-            <StyledModal>
-                
-            </StyledModal>
-        </StyledModalOverlay>
-    )
+export const HeroeModal = (props) => {
+	return (
+		<StyledModalOverlay>
+			<StyledModal>
+				<StyledModalHeader>
+					<div>
+						{props.heroeData.name}
+					</div>
+					<img alt="close icon" onClick={props.onClose} src={CloseImage} />
+				</StyledModalHeader>
+				<StyledModalBody>
+					{props.heroeData && props.heroeData.comicsList && props.heroeData.comicsList.map((comic) => {
+							return (
+								<Link key={comic.id} to={`/comic/${comic.id}`}>
+									<div>
+										<div>
+											<img alt="comic poster" src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}/>
+										</div>
+										<div>
+											{comic.title}
+											<StyledDescription>
+												{comic.description || "Description not found."}
+											</StyledDescription>
+										</div>
+									</div>
+								</Link>
+							)
+						})
+					}
+
+				</StyledModalBody>
+			</StyledModal>
+		</StyledModalOverlay>
+	)
 }

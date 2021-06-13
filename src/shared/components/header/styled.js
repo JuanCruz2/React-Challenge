@@ -8,9 +8,11 @@ export const StyledHeader = styled.header`
   align-items: center;
   margin-bottom: 12px;
   
-   > img { 
-    height: 48px;
-    margin-right: 12px
+  a {
+    > img { 
+      height: 48px;
+      margin-right: 12px
+    }
   }
 
   input {

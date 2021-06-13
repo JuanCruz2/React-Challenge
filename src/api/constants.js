@@ -7,3 +7,4 @@ export const GET_CHARACTERS_LIST = `${apiBase}/v1/public/characters?${authorized
 export const GET_CHARACTERS_LIST_BY_NAME = (name) => `${apiBase}/v1/public/characters?${authorizedParams}&nameStartsWith=${name}&limit=100`
 export const GET_COMICS_LIST_BY_NAME = (name) => `${apiBase}/v1/public/comics?${authorizedParams}&titleStartsWith=${name}&limit=100&orderBy=-onsaleDate`
 export const GET_COMICS_DETAILS_BY_ID = (id) => `${apiBase}/v1/public/comics/${id}?${authorizedParams}`
+export const GET_CHARACTER_COMICS_BY_ID = (id) => `${apiBase}/v1/public/characters/${id}/comics?${authorizedParams}&limit=100`

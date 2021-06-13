@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { HeroeCard } from "./components/heroe-card"
 import { HeroeModal } from "./components/heroe-modal"
-import { StyledWrapper, StyledTabItem } from "./styled"
+import { StyledWrapper, StyledTabItem, StyledTabsWrapper } from "./styled"
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  fetchRandomCharacters, searchCharactersAndComics
+  fetchRandomCharacters, 
+  searchCharactersAndComics, 
+  fetchCharacterComics, 
 } from '../../reducers/characters/charactersSlice';
 import { Link } from "react-router-dom";
 
@@ -12,6 +14,7 @@ import { Loader } from "../../shared/components/loader"
 
 export const HomePage = (props) => {
   const [activeView, setActiveView] = useState("characters")
+  const [openModal, setOpenModal] = useState(false)
   const reducerState = useSelector((state) => state.characters);
   const dispatch = useDispatch();
 
@@ -32,7 +35,7 @@ export const HomePage = (props) => {
   return (
     <div>
       {!reducerState.loading && (
-        <div>
+        <StyledTabsWrapper>
           <StyledTabItem 
             onClick={() => setActiveView("characters")}
             isActive={activeView === "characters"}
@@ -46,7 +49,7 @@ export const HomePage = (props) => {
           >
             COMICS ({reducerState.comicsList.length})
           </StyledTabItem>
-        </div>
+        </StyledTabsWrapper>
       )}
       <StyledWrapper>
         {reducerState.loading && (
@@ -60,6 +63,10 @@ export const HomePage = (props) => {
                 key={character.id}
                 name={character.name}
                 image={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                onClick={() => {
+                  dispatch(fetchCharacterComics(character))
+                  setOpenModal(true)
+                }}
               />
             )
           })
@@ -79,7 +86,14 @@ export const HomePage = (props) => {
           })
         )}
       </StyledWrapper>
-      <HeroeModal></HeroeModal>
+        {openModal && (
+          <HeroeModal 
+            heroeData={reducerState.selectedCharacter}
+            onClose={() => {
+              setOpenModal(false)
+            }}
+          />
+        )}
     </div>
   )
 }
