@@ -22,6 +22,7 @@ export const StyledCardBody = styled.div`
     font-weight: bold;
     letter-spacing: 1px;
     margin-top: 0;
+    text-decoration: none;
   }
 
   &::before {

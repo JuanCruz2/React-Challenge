@@ -1,24 +1,45 @@
 import React from "react";
-import {StyledComic, StyledComicImage, StyledComicDescriptionWrapper} from "./styled"
+import { useSelector } from 'react-redux';
+import { Loader } from "../../../../shared/components/loader"
+import { StyledComic, StyledComicImage, StyledComicDescriptionWrapper } from "./styled"
 
 export const ComicDetails = () => {
-   return (
-        <StyledComic>
-            <div>
-                <StyledComicImage src="https://i.annihil.us/u/prod/marvel/i/mg/2/d0/5ce401142935b/clean.jpg" />
-            </div>
-            <StyledComicDescriptionWrapper>
-                <h1>The Amazing Spiderman</h1>
+	const reducerState = useSelector((state) => state.comicDetails);
+	const comicData = reducerState.comicData
+	const onSaleDate = comicData && comicData.dates && comicData.dates.find((dateData) => dateData.type === "onsaleDate")
 
-                <p>
-                    Published: May 29
-                </p>
-                <p>
-                    Writter: Blabablabla
-                </p>
-                
-                <p>descripcion</p>
-            </StyledComicDescriptionWrapper>
-        </StyledComic>
-    )   
+	return (
+		<StyledComic>
+			{reducerState.loading && (
+				<Loader />
+			)}
+
+			<div>
+				{comicData && comicData.thumbnail && (
+					<StyledComicImage src={`${comicData.thumbnail.path}.${comicData.thumbnail.extension}`} />
+				)}
+			</div>
+			<StyledComicDescriptionWrapper>
+				<h1>{comicData.title}</h1>
+				{onSaleDate && (
+					<p>
+						Published: {new Date(onSaleDate.date).toLocaleDateString()}
+					</p>
+				)}
+				
+				{comicData && comicData.creators && (
+					<p>
+						Creators: {comicData.creators.items.map((creatorData) => creatorData.name).join(" | ")}
+					</p>
+				)}
+
+				{comicData && comicData.description && (
+					<p>
+						Description: {comicData.description}
+					</p>
+				)}
+
+			</StyledComicDescriptionWrapper>
+		</StyledComic>
+	)
 }

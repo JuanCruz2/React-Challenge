@@ -11,3 +11,4 @@
 * Search characters and comics
 * Search characters by query parameters
 * Search comics by query parameters
+* Redirect to comic detail page on comic card click

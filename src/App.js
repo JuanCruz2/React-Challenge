@@ -14,10 +14,8 @@ function App() {
     <Router>
       <GlobalStyle />
       <PageLayout>
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/comic">
+          <Route path="/comic/:comicId">
             <ComicPage />
           </Route>
           <Route path="/">

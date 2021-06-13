@@ -7,6 +7,10 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Montserrat', sans-serif;
   }
+
+  a {
+    text-decoration: none;
+  }
 `
 
 export const StyledInput = styled.input`

@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchRandomCharacters, searchCharactersAndComics
 } from '../../reducers/characters/charactersSlice';
+import { Link } from "react-router-dom";
+
 import { Loader } from "../../shared/components/loader"
 
 export const HomePage = (props) => {
@@ -66,11 +68,13 @@ export const HomePage = (props) => {
         {activeView === "comics" && (
           reducerState.comicsList.map((comic) => {
             return (
-              <HeroeCard
-                key={comic.id}
-                name={comic.title}
-                image={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-              />
+              <Link to={`/comic/${comic.id}`}>
+                <HeroeCard
+                  key={comic.id}
+                  name={comic.title}
+                  image={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                />
+              </Link>
             )
           })
         )}
