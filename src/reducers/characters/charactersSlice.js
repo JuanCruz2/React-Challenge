@@ -27,7 +27,6 @@ export const searchCharactersAndComics = createAsyncThunk(
 	}
 );
 
-
 export const charactersSlice = createSlice({
 	name: 'characters',
 	initialState,
