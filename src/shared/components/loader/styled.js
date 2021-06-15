@@ -13,7 +13,7 @@ export const StyledLoader = styled.div`
     justify-content: center;
 
     img {
-        width: 60px;
+        width: 250px;
         animation: flash 1.5s infinite ease; 
     }
 

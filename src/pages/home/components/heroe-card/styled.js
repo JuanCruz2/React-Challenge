@@ -57,6 +57,7 @@ export const StyledCardBody = styled.div`
 `
 
 export const StyledCard = styled.div`
+  position: relative;
   cursor: pointer;
 
   &:hover {
@@ -68,4 +69,25 @@ export const StyledCard = styled.div`
     }
    
   }
+`
+
+export const StyledFavoriteWrapper = styled.div`
+  position: absolute;
+  background: white;
+  padding: 4px 6px;
+  border-radius: 6px;
+  bottom: 12px;
+  left: 12px;
+  z-index: 35;
+  img {
+    width: 20px;
+  }
+
+  &:hover {
+    opacity: .5;
+  }
+`
+
+export const StyledCardContent = styled.div`
+  position: relative;
 `
