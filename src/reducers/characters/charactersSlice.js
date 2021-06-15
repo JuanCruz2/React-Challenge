@@ -5,6 +5,8 @@ const initialState = {
 	charactersList: [],
 	comicsList: [],
 	selectedCharacter: {},
+	favoritesCharacters: localStorage.getItem("favoritesCharacters") ? 
+	JSON.parse(localStorage.getItem("favoritesCharacters")) : [],
 	loading: true,
 };
 
@@ -39,6 +41,24 @@ export const fetchCharacterComics = createAsyncThunk(
 export const charactersSlice = createSlice({
 	name: 'characters',
 	initialState,
+	reducers: {
+    updateFavoriteList: (state, action) => {
+			let newFavoritesList = []
+			if(state.favoritesCharacters.find((favoriteCharacter) => favoriteCharacter.id === action.payload.id)) {
+				newFavoritesList = state.favoritesCharacters.filter((favoriteCharacter) => {
+					return favoriteCharacter.id !== action.payload.id
+				})
+			} else {
+				newFavoritesList = [
+					...state.favoritesCharacters,
+					action.payload,
+				]
+			}
+
+			state.favoritesCharacters = newFavoritesList
+			localStorage.setItem("favoritesCharacters", JSON.stringify(newFavoritesList))
+    },
+  },
 	extraReducers: {
 		[fetchRandomCharacters.pending]: (state, action) => {
 			state.loading = true
@@ -71,5 +91,7 @@ export const charactersSlice = createSlice({
 		},
 	},
 })
+
+export const { updateFavoriteList } = charactersSlice.actions;
 
 export default charactersSlice.reducer;

@@ -27,7 +27,12 @@ export const comicDetailsSlice = createSlice({
 			state.loading = false
 			state.comicData = action.payload
 		},
+		[fetchComicDetails.rejected]: (state) => {
+			state.loading = false
+			alert("Not a valid character, please check provided id.")
+		},
 	},
 })
+
 
 export default comicDetailsSlice.reducer;

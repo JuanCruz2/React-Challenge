@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchRandomCharacters, 
   searchCharactersAndComics, 
-  fetchCharacterComics, 
+  fetchCharacterComics,
+  updateFavoriteList, 
 } from '../../reducers/characters/charactersSlice';
 import { Link } from "react-router-dom";
 
@@ -49,6 +50,13 @@ export const HomePage = (props) => {
           >
             COMICS ({reducerState.comicsList.length})
           </StyledTabItem>
+          |
+          <StyledTabItem 
+            onClick={() => setActiveView("favorites")}
+            isActive={activeView === "favorites"}
+          >
+            FAVORITES ({reducerState.favoritesCharacters.length})
+          </StyledTabItem>
         </StyledTabsWrapper>
       )}
       <StyledWrapper>
@@ -63,6 +71,10 @@ export const HomePage = (props) => {
                 key={character.id}
                 name={character.name}
                 image={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                isFavorite={reducerState.favoritesCharacters.some((favoriteCharacter) => favoriteCharacter.id === character.id)}
+                onFavoriteClick={() => {
+                  dispatch(updateFavoriteList(character))
+                }}
                 onClick={() => {
                   dispatch(fetchCharacterComics(character))
                   setOpenModal(true)
@@ -80,8 +92,29 @@ export const HomePage = (props) => {
                   key={comic.id}
                   name={comic.title}
                   image={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                  hideFavorites
                 />
               </Link>
+            )
+          })
+        )}
+
+        {activeView === "favorites" && (
+          reducerState.favoritesCharacters.map((character, index) => {
+            return (
+              <HeroeCard
+                key={index}
+                name={character.name}
+                image={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                isFavorite={true}
+                onFavoriteClick={() => {
+                  dispatch(updateFavoriteList(character))
+                }}
+                onClick={() => {
+                  dispatch(fetchCharacterComics(character))
+                  setOpenModal(true)
+                }}
+              />
             )
           })
         )}

@@ -1,5 +1,5 @@
 import React from "react";
-import MarvelLogo from '../../../assets/img/logo-loader.png'
+import MarvelLogo from '../../../assets/img/logo-1.png'
 import {StyledLoader} from "./styled"
 
 export const Loader = () => {
