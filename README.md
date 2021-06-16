@@ -30,6 +30,10 @@ Project for the LenioLabs bootcamp. A hero and comics searcher that allows to an
 * Redirect to comic detail page on comic card click
 * Favorite character selection
 
+## To do list
+
+* Unit testing
+
 # Screenshots
 
 ## Preloader
